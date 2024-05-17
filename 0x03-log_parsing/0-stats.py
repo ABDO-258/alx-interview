@@ -6,7 +6,7 @@ import re
 
 
 line_Num = 0
-regex = r"^\d+\.\d+\.\d+\.\d+ .+ \"GET \/projects\/260 HTTP\/1.1\" \d+ \d+$"
+regex = r"^(.+)?\[.+\] \"GET \/projects\/260 HTTP\/1.1\" \w+ \d+$"
 total_size = 0
 
 stat_dict = {"200": 0, "301": 0, "400": 0, "401": 0,
@@ -24,7 +24,10 @@ def printStats():
 def get_filesize(xline):
     """get the file size from the line """
     line_list = xline.split(" ")
-    return int(line_list[-1])
+    try:
+        return int(line_list[-1])
+    except ValueError:
+        return 0
 
 
 def get_status(xline):
@@ -32,16 +35,15 @@ def get_status(xline):
     line_list = xline.split(" ")
     if (line_list[-2]) in stat_dict:
         stat_dict[line_list[-2]] += 1
-    return int(line_list[-2])
+    return (line_list[-2])
 
 
 try:
     for line in sys.stdin:
-        line_Num += 1
         if re.search(regex, line):
             total_size += get_filesize(line)
             status = get_status(line)
-
+            line_Num += 1
         if line_Num % 10 == 0:
             printStats()
     printStats()
