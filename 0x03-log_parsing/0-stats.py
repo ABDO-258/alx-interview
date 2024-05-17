@@ -44,6 +44,7 @@ try:
 
         if line_Num % 10 == 0:
             printStats()
+    printStats()
 
 except KeyboardInterrupt:
     printStats()
