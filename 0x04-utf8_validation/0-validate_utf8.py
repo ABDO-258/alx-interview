@@ -44,4 +44,4 @@ def validUTF8(data):
             expected_continuation_bytes -= 1
         # bin_data.append(binary_representation)
     # print(bin_data)
-    return True
+    return expected_continuation_bytes == 0
