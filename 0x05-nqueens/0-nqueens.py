@@ -13,6 +13,7 @@ def print_solution(solution):
                 positions.append([row_index, col_index])
     print(positions)
 
+
 def nqueens(N):
     """the N queens problem"""
     # create the board
@@ -51,6 +52,7 @@ def safePlace(row, col, board):
         j -= 1
     return True
 
+
 def placeQueens(board, col, N, solutions):
     """define where to place the queens recursively"""
 
@@ -61,7 +63,7 @@ def placeQueens(board, col, N, solutions):
         if safePlace(i, col, board):
             board[i][col] = 1
             placeQueens(board, col + 1, N, solutions)
-            board[i][col] = 0 # Backtrack
+            board[i][col] = 0  # Backtrack
 
 
 if __name__ == "__main__":
