@@ -2,7 +2,6 @@
 """scribt to  rotate a matrix 90 degrees clockwise."""
 
 
-
 def rotate_2d_matrix(matrix):
     """rotate a matrix 90 degrees"""
     rows = len(matrix)
