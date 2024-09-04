@@ -16,6 +16,9 @@ def isWinner(x, nums):
     """define the winner in the game """
     maria_wins = 0
     ben_wins = 0
+
+    if x < 1 or not nums:
+        return None
     # Iterate through the given nums array
     # representing the different rounds of the game.
     for n in nums:
